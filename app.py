@@ -90,4 +90,4 @@ if __name__ == "__main__":
     from threading import Thread
     Thread(target=lambda: bot.infinity_polling(timeout=10, long_polling_timeout=5)).start()
     import os
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 7860)))
