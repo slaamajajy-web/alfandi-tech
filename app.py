@@ -87,6 +87,7 @@ def dashboard():
     return render_template("dashboard.html", licenses=lics, logs=logs)
 
 if __name__ == "__main__":
-    init_db()
-    # تشغيل السيرفر على المنفذ 5000
-    app.run(host="0.0.0.0", port=5000)
+    from threading import Thread
+    Thread(target=lambda: bot.infinity_polling(timeout=10, long_polling_timeout=5)).start()
+    import os
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
