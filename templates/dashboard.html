@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>لوحة التحكم - الفندي</title>
+</head>
+<body class="bg-gray-950 text-gray-200 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-yellow-600 mb-8 text-center">لوحة تحكم إمبراطورية الفندي</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
+                <h2 class="text-xl mb-4 text-yellow-500">المفاتيح المباعة</h2>
+                <table class="w-full text-sm">
+                    <thead><tr class="border-b border-gray-700 text-right"><th class="p-2">المفتاح</th><th class="p-2">الباقة</th><th class="p-2">HWID</th></tr></thead>
+                    <tbody>
+                        {% for lic in licenses %}
+                        <tr class="border-b border-gray-800">
+                            <td class="p-2">{{ lic[0] }}</td>
+                            <td class="p-2">{{ lic[1] }}</td>
+                            <td class="p-2 text-xs text-gray-500">{{ lic[2] if lic[2] else 'بانتظار الربط' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
+                <h2 class="text-xl mb-4 text-yellow-500">آخر التحركات</h2>
+                <ul class="space-y-2">
+                    {% for log in logs %}
+                    <li class="text-sm border-r-2 border-yellow-600 pr-2 py-1">
+                        <span class="text-gray-400">[{{ log[1] }}]</span> {{ log[0] }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
